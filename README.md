@@ -23,13 +23,17 @@ At the beginning I found it fairly easy as I have made a pseudocode in my head a
 
 The below screenshots are from my final code after many tries
 
-1. I have first written the function to store the user choices
+1. I have first written the function to store the user choices![User Choice](https://user-images.githubusercontent.com/115581300/204653102-3e762f5a-7d36-4200-b0eb-418a4e58266a.jpg)
 
-2. Then I have created a condition and a for loop to generate the password based on user choices
 
-3. And lastly, once the password was generated, I had to create another function that will write the password on the page
+2. Then I have created a condition and a for loop to generate the password based on user choices![Generates the random pass](https://user-images.githubusercontent.com/115581300/204653115-5c399d51-a7a7-4ac1-be9b-b19dbbffc096.jpg)
 
-4. And the final project with a password generated.
+
+3. And lastly, once the password was generated, I had to create another function that will write the password on the page![Write Password on Page](https://user-images.githubusercontent.com/115581300/204653136-6371f5d9-38a3-4e8a-9a1f-b1594307ccfa.jpg)
+
+
+4. And the final project with a password generated.![Final Project](https://user-images.githubusercontent.com/115581300/204653148-ac6ed3c3-76c8-4ded-88fe-71c3d0ed050d.jpg)
+
 
 
 # Things I learned
