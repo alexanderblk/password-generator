@@ -88,9 +88,27 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+// User Input Variables
+var confirmLower;
+var confirmUpper;
+var confirmNum;
+var confirmChar;
+
+// Choices variable that will be concatenated
+var userChoices;
+
+// Get references to the #generate element
+var generateBtn = document.querySelector('#generate');
+
+generateBtn.addEventListener('click', function () {
+  getPasswordOptions();
+});
+
+var passLength;
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-  var passLength = prompt("Please choose a password\r\nYour password needs to have at least 10 characters and no more than 64");
+  passLength = parseInt(prompt("Please choose a password\r\nYour password needs to have at least 10 characters and no more than 64"));
   if (passLength >= 10 && passLength <= 64) {
     charTypes();
   }
@@ -104,31 +122,76 @@ function getPasswordOptions() {
   }
 }
 
-getPasswordOptions();
-
 function charTypes() {
-  var selectChar = {
-    confirmLower: confirm("Do you want lowercase letters in your password?"),
-    confirmUpper: confirm("Do you want uppercase letters in your password?"),
-    confirmNum: confirm("Do you want numbers in your password?"),
-    confirmChar: confirm("Do you want special characters in your password?")
+  confirmLower = confirm("Do you want lowercase letters in your password?");
+  confirmUpper = confirm("Do you want uppercase letters in your password?");
+  confirmNum = confirm("Do you want numbers in your password?");
+  confirmChar = confirm("Do you want special characters in your password?");
+  if (!confirmLower && !confirmUpper && !confirmNum && !confirmChar) {
+    userChoices = alert("You must choose a criteria!");
+    getPasswordOptions();
   }
-}
+  // All Types Selected
+  else if (confirmLower && confirmUpper && confirmNum && confirmChar) {
+    userChoices = lowerCasedCharacters.concat(upperCasedCharacters, numericCharacters, specialCharacters);
+  }
 
-charTypes();
+  // 3 Types Selected
+  else if (confirmLower && confirmUpper && confirmNum) {
+    userChoices = lowerCasedCharacters.concat(upperCasedCharacters, numericCharacters);
+  }
+  else if (confirmLower && confirmUpper && confirmChar) {
+    userChoices = lowerCasedCharacters.concat(upperCasedCharacters, specialCharacters);
+  }
+  else if (confirmLower && confirmNum && confirmChar) {
+    userChoices = lowerCasedCharacters.concat(numericCharacters, specialCharacters);
+  }
+  else if (confirmUpper && confirmNum && confirmChar) {
+    userChoices = upperCasedCharacters.concat(numericCharacters, specialCharacters);
+  }
 
-// Function for getting a random element from an array
-function getRandom(arr) {
+  // 2 Types Selected
+  else if (confirmLower && confirmUpper) {
+    userChoices = lowerCasedCharacters.concat(upperCasedCharacters);
+  }
+  else if (confirmLower && confirmNum) {
+    userChoices = lowerCasedCharacters.concat(numericCharacters);
+  }
+  else if (confirmLower && confirmChar) {
+    userChoices = lowerCasedCharacters.concat(specialCharacters);
+  }
+  else if (confirmUpper && confirmNum) {
+    userChoices = upperCasedCharacters.concat(numericCharacters);
+  }
+  else if (confirmUpper && confirmChar) {
+    userChoices = upperCasedCharacters.concat(specialCharacters);
+  }
+  else if (confirmNum && confirmChar) {
+    userChoices = numericCharacters.concat(specialCharacters);
+  }
 
+  // 1 Type Selected
+  else if (confirmLower) {
+    userChoices = lowerCasedCharacters;
+  }
+  else if (confirmUpper) {
+    userChoices = upperCasedCharacters;
+  }
+  else if (confirmNum) {
+    userChoices = numericCharacters;
+  }
+  // Created space variable to fill uppercase conversion
+  else if (confirmChar) {
+    userChoices = specialCharacters;
+  }
 }
 
 // Function to generate password with user input
 function generatePassword() {
-
+  for (var i = 0; i < passLength; i++) {
+    var passResult = userChoices[Math.floor(Math.random() * userChoices.passLength)];
+  }
 }
-
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
